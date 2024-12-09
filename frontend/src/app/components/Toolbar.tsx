@@ -24,11 +24,11 @@ interface ToolbarProps {
 }
 
 export default function Toolbar({ editor, onDownload }: ToolbarProps) {
+  const router = useRouter()
+  
   if (!editor) {
     return;
   }
-
-  const router = useRouter()
 
   const handleCreateNote = () => {
     const noteId = nanoid()

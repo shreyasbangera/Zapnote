@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Plus, PlusCircle } from "lucide-react";
+import { Plus } from "lucide-react";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

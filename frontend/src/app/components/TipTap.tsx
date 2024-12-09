@@ -8,14 +8,11 @@ import { createNote, fetchNotes } from "../lib/data";
 import { useEffect, useRef, useState } from "react";
 import Toolbar from "./Toolbar";
 import TextAlign from '@tiptap/extension-text-align';
-import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
-import ListItem from '@tiptap/extension-list-item';
 
 const Tiptap = () => {
   const pathname = usePathname();
   const [note, setNote] = useState<string>("");
-  const [savingNote, setSavingNote] = useState<boolean>(false)
+  // const [savingNote, setSavingNote] = useState<boolean>(false)
   const noteId = pathname?.split("/note/")[1];
   const timer = useRef(null);
 
@@ -32,6 +29,7 @@ const Tiptap = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Underline,
       TextAlign.configure({
         types: ["heading", "paragraph"],
         alignments: ["left", "center", "right"],
@@ -61,11 +59,11 @@ const Tiptap = () => {
   };
 
   async function saveNote(noteId: string, note: string) {
-    setSavingNote(true)
-    const data = await createNote(noteId, note);
-    if(data){
-      setSavingNote(false)
-    }
+    // setSavingNote(true)
+    await createNote(noteId, note);
+    // if(data){
+    //   setSavingNote(false)
+    // }
   }
 
   useEffect(() => {
