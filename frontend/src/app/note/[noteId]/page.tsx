@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import Tiptap from '@/app/components/TipTap'
 import { fetchNotes } from '@/app/lib/data';
 
