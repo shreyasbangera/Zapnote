@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import Tiptap from '@/app/components/TipTap'
 import { fetchNotes } from '@/app/lib/data';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export default async function page({params} : {params: {noteId : string}}) {
   const noteData = await fetchNotes(params.noteId);
