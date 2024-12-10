@@ -5,6 +5,7 @@ import {
   AlignLeft,
   AlignRight,
   Bold,
+  Code,
   Download,
   File,
   Italic,
@@ -17,6 +18,7 @@ import {
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface ToolbarProps {
   editor: Editor | null;
@@ -35,8 +37,22 @@ export default function Toolbar({ editor, onDownload }: ToolbarProps) {
     router.push(`/note/${noteId}`)
   }
 
+  const handleTextSize = (size: string) => {
+    editor.chain().focus().clearNodes().run()
+    if (size === 'small') {
+      editor.chain().focus().setParagraph().run()
+    } else if (size === 'normal') {
+      editor.chain().focus().toggleHeading({ level: 3 }).run()
+    } else if (size === 'large') {
+      editor.chain().focus().toggleHeading({ level: 2 }).run()
+    } else if (size === 'huge') {
+      editor.chain().focus().toggleHeading({ level: 1 }).run()
+    }
+  }
+
   return (
-    <div className="border-b border-gray-200 dark:border-gray-600 px-2 lg:px-4 py-2 overflow-x-auto whitespace-nowrap">
+    <div className="flex border-b border-gray-200 dark:border-gray-600 lg:px-2 py-2 overflow-x-auto whitespace-nowrap">
+      <div className="px-2 space-x-1 border-r rounded-none border-gray-200 dark:border-gray-600">
       <Toggle
         size="sm"
         onPressedChange={() => handleCreateNote()}>
@@ -53,10 +69,22 @@ export default function Toolbar({ editor, onDownload }: ToolbarProps) {
         size="sm"
         pressed={editor.isActive("undo")}
         onPressedChange={() => editor.commands.redo()}
-        className="border-r pr-[22px] rounded-none border-gray-200 dark:border-gray-600"
       >
         <Redo className="h-4 w-4" />
       </Toggle>
+      </div>
+      <div className="flex px-2 space-x-1 border-r rounded-none border-gray-200 dark:border-gray-600">
+      <Select defaultValue="small" onValueChange={handleTextSize}>
+        <SelectTrigger className="w-[100px]">
+          <SelectValue placeholder="Text size" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="small">Small</SelectItem>
+          <SelectItem value="normal">Normal</SelectItem>
+          <SelectItem value="large">Large</SelectItem>
+          <SelectItem value="huge">Huge</SelectItem>
+        </SelectContent>
+      </Select>
       <Toggle
         size="sm"
         pressed={editor.isActive("bold")}
@@ -116,13 +144,19 @@ export default function Toolbar({ editor, onDownload }: ToolbarProps) {
         onPressedChange={() =>
           editor.chain().focus().setTextAlign("right").run()
         }
-        className="border-r pr-[22px] rounded-none border-gray-200 dark:border-gray-600"
       >
         <AlignRight className="h-4 w-4" />
       </Toggle>
-      <Button className="ml-3 border-none" onClick={onDownload} size="sm" variant="outline">
+      <Toggle
+        size="sm"
+        pressed={editor.isActive("codeBlock")}
+        onPressedChange={() => editor.chain().focus().toggleCodeBlock().run()}
+      >
+        <Code className="h-4 w-4" />
+      </Toggle>
+      </div>
+      <Button className= "border-none mx-2" onClick={onDownload} size="sm" variant="outline">
         <Download className="h-4 w-4 lg:mr-1" />
-        <p className="hidden lg:block">Download</p>
       </Button>
     </div>
   );
