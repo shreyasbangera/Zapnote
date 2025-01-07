@@ -70,7 +70,7 @@ export default function Home() {
               </h2>
               <p className="text-neutral-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Everything you need for quick note-taking and sharing, nothing
-                you don't.
+                you don&apos;t.
               </p>
             </div>
 
