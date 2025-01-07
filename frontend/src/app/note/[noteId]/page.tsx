@@ -6,7 +6,7 @@ export default async function page({params} : {params: Promise<{noteId: string}>
   const noteId = (await params).noteId
   const noteData = await fetchNotes(noteId);
   return (
-    <div className="lg:px-6 pt-16 lg:pt-20">
+    <div className="pt-16">
     <Tiptap content={noteData?.note || ""} noteId={noteId} />
     </div>
   )

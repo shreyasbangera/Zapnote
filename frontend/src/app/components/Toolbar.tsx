@@ -51,7 +51,7 @@ export default function Toolbar({ editor, onDownload }: ToolbarProps) {
   }
 
   return (
-    <div className="flex border-b border-gray-200 dark:border-gray-600 lg:px-2 py-2 overflow-x-auto whitespace-nowrap">
+    <div className="flex border-y h-[56px] md:px-4 border-gray-200 dark:border-gray-600 py-2 overflow-x-auto whitespace-nowrap">
       <div className="px-2 space-x-1 border-r rounded-none border-gray-200 dark:border-gray-600">
       <Toggle
         size="sm"

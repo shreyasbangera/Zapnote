@@ -29,7 +29,7 @@ export default function Tiptap({ content, noteId }: TiptapProps) {
     editorProps: {
       attributes: {
         class:
-          "px-4 lg:px-6 py-6 lg:py-8 rounded-lg border-none h-full focus:outline-none outline-none rose prose-sm sm:prose lg:prose-lg xl:prose-xl",
+          "px-4 lg:px-8 py-6 lg:py-8 rounded-lg border-none h-full focus:outline-none outline-none prose prose-sm sm:prose lg:prose-lg xl:prose-xl",
       },
     },
     onUpdate: ({ editor }) => {
@@ -74,9 +74,11 @@ export default function Tiptap({ content, noteId }: TiptapProps) {
   };
 
   return (
-    <div className="min-h-[85vh] lg:border lg:rounded-lg border-gray-200 dark:border-gray-600 shadow-sm">
+    <div className="flex flex-col h-[calc(100vh-64px)] shadow-sm">
       <Toolbar editor={editor} onDownload={handleDownload} />
-      <EditorContent editor={editor} className="overflow-y-auto" />
+      <div className="flex-grow overflow-hidden">
+        <EditorContent editor={editor} className="h-full overflow-y-auto" />
+      </div>
     </div>
   );
 }

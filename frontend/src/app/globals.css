@@ -6,6 +6,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html{
+  scroll-behavior: smooth;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -35,7 +38,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0, 0%, 9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
