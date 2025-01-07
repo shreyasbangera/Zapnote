@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <header className="fixed flex justify-between items-center w-full h-16 px-4 md:px-8 bg-background z-50">
       <Link href="/">
-        <h1 className="md:text-xl font-semibold">ZapNote</h1>
+        <h1 className="md:text-xl font-bold">ZapNote</h1>
       </Link>
       <div className="flex items-center gap-4">
       {pathname === "/" && <div className="hidden md:block">

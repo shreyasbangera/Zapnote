@@ -16,8 +16,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen pt-16 bg-background">
-      <div className="px-4 sm:px-6 lg:px-8 py-12">
-        <section id="home" className="flex h-screen flex-col gap-10 items-center">
+      <div className="px-4 sm:px-6 lg:px-8">
+        <section id="home" className="flex h-screen flex-col gap-12 items-center justify-center">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-zinc-900 dark:text-white sm:text-5xl md:text-6xl">
               Simple Note-Taking,
@@ -29,7 +29,6 @@ export default function Home() {
               ideas, available anywhere, anytime.
             </p>
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-              <div className="rounded-md shadow">
                 <Button
                   variant="outline"
                   className="bg-emerald-500 text-white py-6 font-semibold"
@@ -38,7 +37,6 @@ export default function Home() {
                   <Plus />
                   Create new Note
                 </Button>
-              </div>
             </div>
           </div>
           <div className="relative animate__animated animate__fadeInRight">
