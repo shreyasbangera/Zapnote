@@ -13,7 +13,7 @@ interface TiptapProps {
 }
 
 export default function Tiptap({ content, noteId }: TiptapProps) {
-  const timer = useRef(null);
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
   const editor = useEditor({
     extensions: [
@@ -41,9 +41,9 @@ export default function Tiptap({ content, noteId }: TiptapProps) {
 
   const debouncedSave = (content: string) => {
     if (timer.current) {
-      clearInterval(timer.current);
+      clearTimeout(timer.current);
     }
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       saveNote(noteId, content);
     }, 500);
   };
